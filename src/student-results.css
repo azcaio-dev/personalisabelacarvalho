@@ -1,0 +1,375 @@
+/* ========================================
+   RESULTADOS REAIS - CARROSSEL
+======================================== */
+
+.student-results {
+  position: relative;
+  overflow: hidden;
+  padding: 54px 0 44px;
+  border-block: 1px solid #392744;
+  background:
+    radial-gradient(ellipse at 0% 100%, #64218d42, transparent 45%),
+    radial-gradient(ellipse at 100% 0%, #53187836, transparent 45%),
+    #100b15;
+}
+
+.student-results__inner {
+  max-width: 1100px;
+}
+
+.student-results__intro {
+  margin-bottom: 28px;
+}
+
+.student-results__eyebrow {
+  color: #d78aef;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .24em;
+  margin-bottom: 12px;
+  padding-left: 12px;
+  border-left: 3px solid #c46deb;
+  line-height: 1.3;
+}
+
+.student-results__intro h2 {
+  font-size: clamp(30px, 3.1vw, 44px);
+  line-height: 1.13;
+  font-weight: 850;
+  letter-spacing: -.045em;
+  color: #f7f4fa;
+  margin: 0 0 10px;
+}
+
+.student-results__intro h2 span {
+  color: #c46deb;
+}
+
+.student-results__intro p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #d5cadc;
+  margin: 0;
+}
+
+.student-results__carousel {
+  position: relative;
+  min-width: 0;
+}
+
+/* Três comparações simultâneas no desktop. */
+.student-results__track {
+  --results-visible: 3;
+  --results-gap: 18px;
+  --results-card-width: calc((100% - 36px) / 3);
+  position: relative;
+  display: flex;
+  gap: var(--results-gap);
+  align-items: stretch;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  padding: 2px 0;
+}
+
+.student-results__track::-webkit-scrollbar {
+  display: none;
+}
+
+.student-results__track--single {
+  justify-content: center;
+}
+
+.student-results__card {
+  flex: 0 0 var(--results-card-width);
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  scroll-snap-align: start;
+  border: 1px solid #684475;
+  border-radius: 16px;
+  background: #1b1424;
+}
+
+.student-results__pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 3px;
+  background: #e0cde8;
+}
+
+.student-results__photo {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  aspect-ratio: 1 / 1.85;
+  background: #17121d;
+}
+
+.student-results__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.student-results__label {
+  position: absolute;
+  bottom: 13px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #18131eea;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 7px 15px;
+  border-radius: 30px;
+  white-space: nowrap;
+  box-shadow: 0 3px 12px #0004;
+}
+
+.student-results__label--after {
+  background: linear-gradient(110deg, #a232d2, #751b9d);
+}
+
+/* Setas laterais e indicadores. */
+.student-results__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
+  min-height: 40px;
+}
+
+.student-results__arrow {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  color: #fff;
+  background: #8326ae;
+  border: 1px solid #b666d5;
+  border-radius: 50%;
+  padding: 0;
+  transition: background .2s, opacity .2s;
+}
+
+.student-results__arrow:not(:disabled):hover {
+  background: #ab3cdb;
+}
+
+.student-results__arrow:disabled {
+  opacity: .35;
+  cursor: default;
+}
+
+.student-results__arrow--prev,
+.student-results__arrow--next {
+  position: absolute;
+  top: calc((100% - 56px) / 2);
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.student-results__arrow--prev { left: -22px; }
+.student-results__arrow--next { right: -22px; }
+
+.student-results__dots {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-width: 0;
+}
+
+.student-results__dot {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 24px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.student-results__dot::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #77717d;
+  transition: background .2s, transform .2s;
+}
+
+.student-results__dot.is-active::before {
+  background: #d759f0;
+  transform: scale(1.3);
+}
+
+.student-results__note {
+  margin: 20px 0 0;
+  color: #aa9daf;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* Tablet: dois cards por vez. */
+@media (min-width: 769px) and (max-width: 1023px) {
+  .student-results__track {
+    --results-visible: 2;
+    --results-card-width: calc((100% - 18px) / 2);
+  }
+}
+
+/* Celular: uma comparação por vez, com gestos e controles. */
+@media (max-width: 768px) {
+  .student-results {
+    padding: 32px 0 28px;
+  }
+
+  .student-results__inner {
+    max-width: 440px;
+  }
+
+  .student-results__intro {
+    margin-bottom: 20px;
+  }
+
+  .student-results__eyebrow {
+    font-size: 10px;
+    letter-spacing: .19em;
+    margin-bottom: 10px;
+  }
+
+  .student-results__intro h2 {
+    font-size: clamp(25px, 7vw, 31px);
+    line-height: 1.12;
+    margin-bottom: 10px;
+  }
+
+  .student-results__intro p {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .student-results__track {
+    --results-visible: 1;
+    --results-gap: 12px;
+    --results-card-width: 100%;
+  }
+
+  .student-results__card {
+    border-radius: 14px;
+  }
+
+  .student-results__label {
+    bottom: 10px;
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+
+  .student-results__controls {
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  .student-results__arrow--prev,
+  .student-results__arrow--next {
+    position: static;
+    transform: none;
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
+  }
+
+  .student-results__note {
+    margin-top: 14px;
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .student-results__arrow,
+  .student-results__dot::before {
+    transition: none;
+  }
+}
+
+/* ========================================
+   AJUSTES DO CARROSSEL DE RESULTADOS
+======================================== */
+
+/* Remover as setas */
+
+.student-results__arrow {
+  display: none;
+}
+
+/* Centralizar os dots */
+
+.student-results__controls {
+  justify-content: center;
+  min-height: 24px;
+  margin-top: 12px;
+}
+
+/* Desktop */
+
+.student-results__inner {
+  max-width: 980px;
+}
+
+.student-results__carousel {
+  max-width: 920px;
+  margin-inline: auto;
+}
+
+.student-results__card {
+  border-radius: 14px;
+}
+
+.student-results__dot::before {
+  width: 7px;
+  height: 7px;
+}
+
+
+/* Tablet */
+
+@media (min-width: 769px) and (max-width: 1023px) {
+
+  .student-results__carousel {
+    max-width: 640px;
+  }
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+  .student-results__carousel {
+    max-width: 300px;
+    margin-inline: auto;
+  }
+
+  .student-results__card {
+    border-radius: 12px;
+  }
+
+  .student-results__label {
+    font-size: 10px;
+    padding: 5px 12px;
+  }
+
+  .student-results__controls {
+    margin-top: 10px;
+  }
+
+}
