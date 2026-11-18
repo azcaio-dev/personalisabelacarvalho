@@ -1,6 +1,7 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
+import ScrollReveal from './ScrollReveal.jsx'
 import './styles.css'
 
 // Reinicia a posição somente quando a página for recarregada.
@@ -32,4 +33,8 @@ if (navigation?.type === 'reload') {
   }
 }
 
-createRoot(document.getElementById('root')).render(<App />)
+createRoot(document.getElementById('root')).render(
+  <ScrollReveal>
+    <App />
+  </ScrollReveal>
+)
