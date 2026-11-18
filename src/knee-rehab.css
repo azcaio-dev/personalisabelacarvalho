@@ -1,0 +1,238 @@
+/* REABILITAÇÃO DE JOELHO */
+.knee-rehab {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 62px 0;
+  background:
+    radial-gradient(ellipse at 0% 0%, #72209332, transparent 40%),
+    radial-gradient(ellipse at 100% 100%, #7e249b30, transparent 44%),
+    #100c15;
+  border-top: 1px solid #51305e;
+  border-bottom: 1px solid #51305e;
+  scroll-margin-top: 80px;
+}
+
+.knee-rehab .knee-rehab-grid {
+  max-width: 1180px;
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+  align-items: center;
+  gap: clamp(24px, 4vw, 48px);
+}
+
+.knee-rehab-copy {
+  min-width: 0;
+}
+
+.knee-rehab-copy .eyebrow {
+  font-size: 11px;
+  letter-spacing: .2em;
+  margin-bottom: 14px;
+}
+
+.knee-rehab-copy h2 {
+  font-size: clamp(28px, 3.25vw, 45px);
+  line-height: 1.08;
+  font-weight: 850;
+  letter-spacing: -.045em;
+  margin: 0 0 20px;
+}
+
+.knee-rehab-copy h2 span {
+  display: block;
+  color: var(--accent, #c46deb);
+}
+
+.knee-rehab-copy > p {
+  font-size: 15px;
+  line-height: 1.65;
+  margin: 0 0 20px;
+}
+
+.knee-rehab-list {
+  display: grid;
+  gap: 11px;
+  padding: 0;
+  margin: 0 0 25px;
+  list-style: none;
+}
+
+.knee-rehab-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.knee-rehab-list svg,
+.knee-gallery figcaption svg {
+  flex: none;
+  color: var(--accent, #c46deb);
+}
+
+.knee-rehab .knee-rehab-cta {
+  width: 100%;
+  max-width: 480px;
+  min-width: 0;
+  font-size: 13px;
+  line-height: 1.35;
+  padding: 14px 16px;
+  text-align: center;
+  white-space: normal;
+}
+
+.knee-rehab-note {
+  display: block;
+  color: var(--muted, #c5bccb);
+  max-width: 480px;
+  font-size: 11px;
+  line-height: 1.5;
+  margin-top: 12px;
+}
+
+/* Mosaico com as fotos reais do curso */
+.knee-gallery {
+  display: grid;
+  gap: 6px;
+  padding: 6px;
+  margin: 0;
+  min-width: 0;
+  border: 1px solid #754489;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #21142b, #16101c);
+  box-shadow: 0 10px 40px #8c27b31f;
+}
+
+.knee-gallery-row {
+  display: grid;
+  gap: 6px;
+  height: clamp(148px, 17vw, 233px);
+  min-width: 0;
+}
+
+.knee-gallery-row--top {
+  grid-template-columns: 1.18fr 1fr;
+}
+
+.knee-gallery-row--bottom {
+  grid-template-columns: 1.45fr 1fr;
+}
+
+.knee-photo {
+  overflow: hidden;
+  min-width: 0;
+  min-height: 0;
+  border: 1px solid #85539980;
+  border-radius: 13px;
+  background: #19131f;
+}
+
+.knee-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.knee-photo--certificate img { object-position: center 35%; }
+.knee-photo--anatomy img { object-position: center 53%; }
+.knee-photo--practice img { object-position: center 46%; }
+.knee-photo--training img { object-position: center 52%; }
+
+.knee-gallery figcaption {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  line-height: 1.4;
+  text-align: center;
+  padding: 8px 5px 6px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .knee-rehab {
+    padding: 34px 0 36px;
+  }
+
+  .knee-rehab .knee-rehab-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+  }
+
+  .knee-rehab-copy {
+    display: contents;
+  }
+
+  /* No celular, o título vem antes do mosaico e o CTA após as fotos. */
+  .knee-rehab-copy .eyebrow {
+    font-size: 10px;
+    margin: 0 0 -12px;
+  }
+
+  .knee-rehab-copy h2 {
+    font-size: clamp(27px, 7.1vw, 34px);
+    margin: 0;
+  }
+
+  .knee-rehab-copy > p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin: -9px 0 0;
+  }
+
+  .knee-rehab-list {
+    gap: 9px;
+    margin: -6px 0 0;
+  }
+
+  .knee-rehab-list li {
+    font-size: 13px;
+    gap: 9px;
+  }
+
+  .knee-rehab-list svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .knee-gallery {
+    grid-row: 4;
+    width: 100%;
+    max-width: 480px;
+    justify-self: center;
+    padding: 4px;
+    gap: 5px;
+    border-radius: 15px;
+  }
+
+  .knee-gallery-row {
+    height: clamp(136px, 43vw, 210px);
+    gap: 5px;
+  }
+
+  .knee-photo {
+    border-radius: 10px;
+  }
+
+  .knee-gallery figcaption {
+    font-size: 11px;
+    padding: 7px 4px;
+  }
+
+  .knee-rehab .knee-rehab-cta {
+    justify-self: center;
+    font-size: 12px;
+    padding: 13px 12px;
+  }
+
+  .knee-rehab-note {
+    justify-self: center;
+    text-align: center;
+    margin: -12px 0 0;
+    font-size: 10px;
+  }
+}

@@ -1,5 +1,6 @@
 import React from 'react'
-import { contact, whatsappLink } from './config.js'
+import { contact, messages, whatsappLink } from './config.js'
+import KneeRehab from './KneeRehab.jsx'
 
 // Caminhos das imagens
 const img = name => `./images/${name}.webp`
@@ -9,6 +10,7 @@ const nav = [
   ['Início', 'inicio'],
   ['Sobre', 'sobre'],
   ['Serviços', 'servicos'],
+  ['Joelho', 'reabilitacao'],
   ['Resultados', 'resultados'],
   ['Contato', 'contato']
 ]
@@ -278,6 +280,7 @@ function Header({ open, hidden, toggle, close, onContact }) {
           ))}
           <ContactButton
             className="nav-contact"
+            message={messages.header}
             onContact={() => {
               close()
               onContact()
@@ -307,7 +310,10 @@ function Hero({ onContact }) {
             </span>
           </h1>
           <p>Treinos personalizados para emagrecimento, hipertrofia, saúde e fortalecimento do joelho.</p>
-          <ContactButton onContact={onContact} />
+          <ContactButton
+            onContact={onContact}
+            message={messages.hero}
+          />
           <div className="hero-tags">
             <span><Icon name="laptop" /> Treino online</span>
             <i />
@@ -398,7 +404,7 @@ function Modalities({ onContact }) {
                 <p>{desc}</p>
                 <a
                   className="text-link"
-                  href={whatsappLink(`Olá, Isabela! Quero saber mais sobre ${title.toLowerCase()}.`) || '#contato'}
+                  href={whatsappLink(messages[photo]) || '#contato'}
                   onClick={whatsappLink() ? undefined : e => {
                     e.preventDefault()
                     onContact()
@@ -486,7 +492,12 @@ function Closing({ onContact }) {
         <Eyebrow>O PRIMEIRO PASSO É SEU</Eyebrow>
         <h2>Pronto(a) para começar<br /><span>a sua transformação?</span></h2>
         <p>Entre em contato e descubra qual modalidade faz sentido para você.</p>
-        <ContactButton onContact={onContact}>Fale comigo agora</ContactButton>
+        <ContactButton
+          onContact={onContact}
+          message={messages.closing}
+        >
+          Fale comigo agora
+        </ContactButton>
       </div>
     </section>
   )
@@ -568,6 +579,10 @@ export default class App extends React.Component {
           <Hero onContact={this.openContact} />
           <Services />
           <About />
+          <KneeRehab
+            ContactButton={ContactButton}
+            onContact={this.openContact}
+          />
           <Modalities onContact={this.openContact} />
           <Results />
           <Benefits />
