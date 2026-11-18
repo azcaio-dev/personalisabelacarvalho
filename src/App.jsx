@@ -2,6 +2,30 @@ import React from 'react'
 import { contact, messages, whatsappLink } from './config.js'
 import KneeRehab from './KneeRehab.jsx'
 
+// Voltar ao topo ao recarregar a página
+
+const navigation = performance.getEntriesByType('navigation')[0]
+
+if (navigation?.type === 'reload') {
+  window.history.scrollRestoration = 'manual'
+
+  if (window.location.hash) {
+    window.history.replaceState(
+      window.history.state,
+      '',
+      window.location.pathname + window.location.search
+    )
+  }
+
+  window.addEventListener('load', () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'instant'
+    })
+  }, { once: true })
+}
+
 // Caminhos das imagens
 const img = name => `./images/${name}.webp`
 
